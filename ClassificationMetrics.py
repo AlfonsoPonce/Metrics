@@ -1,7 +1,7 @@
 import torch
 from torch import Tensor
 
-from sklearn.metrics import confusion_matrix, precision_score, recall_score, f1_score, roc_auc_score
+from sklearn.metrics import confusion_matrix, precision_score, recall_score, f1_score, roc_auc_score, jaccard_score
 
 class ClassificationMetrics:
     
@@ -28,3 +28,6 @@ class ClassificationMetrics:
 
     def ROC_AUC(self, y_preds: Tensor, y_targets: Tensor):
         return roc_auc_score(y_targets.numpy(), y_preds.numpy())
+
+    def jaccard_similarity_coefficient(self, y_preds: Tensor, y_targets: Tensor):
+        return jaccard_score(y_targets.numpy(), y_preds.numpy())
